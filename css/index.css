@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    min-width: 320px;
+    width: 98%;
+    max-width: 425px;
+    margin: auto;
+    height: 100vh;
+    /* background-color: blue; */
+}
+
+canvas {
+    /* height: inherit;
+    width: inherit; */
+    background-color: black;
+}
