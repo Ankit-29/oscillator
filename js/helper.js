@@ -29,8 +29,8 @@ getDistance = (osc, rh) => {
 
 getStartingHurdles = () => {
     return [
-        new RoundHurdle(parseInt(Math.random() * ROUND_HURDLE_RANDOM_RADIUS, 10) + ROUND_HURDLE_RADIUS_MIN-10, parseInt(Math.random() * canvas.width), HURDLE_START_POINT),
-        new RoundHurdle(parseInt(Math.random() * ROUND_HURDLE_RANDOM_RADIUS, 10) + ROUND_HURDLE_RADIUS_MIN-10, parseInt(Math.random() * canvas.width), HURDLE_START_POINT + 300),
-        new RoundHurdle(parseInt(Math.random() * ROUND_HURDLE_RANDOM_RADIUS, 10) + ROUND_HURDLE_RADIUS_MIN-10, parseInt(Math.random() * canvas.width), HURDLE_START_POINT + 100),
+        new RoundHurdle(parseInt(Math.random() * ROUND_HURDLE_RANDOM_RADIUS, 10) + ROUND_HURDLE_RADIUS_MIN - 10, parseInt(Math.random() * canvas.width), HURDLE_START_POINT),
+        // new RoundHurdle(parseInt(Math.random() * ROUND_HURDLE_RANDOM_RADIUS, 10) + ROUND_HURDLE_RADIUS_MIN - 10, parseInt(Math.random() * canvas.width), canvas.height / 2),
+        // new RoundHurdle(parseInt(Math.random() * ROUND_HURDLE_RANDOM_RADIUS, 10) + ROUND_HURDLE_RADIUS_MIN-10, parseInt(Math.random() * canvas.width), HURDLE_START_POINT + 100),
     ];
 }

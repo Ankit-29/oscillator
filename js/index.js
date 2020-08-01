@@ -41,21 +41,21 @@ gamePlay = () => {
             hurdle.y += GAME_SPEED;
         });
     }
-    
+
     if (hurdles[0].y > canvas.height) {
         hurdles.shift();
         increaseScore();
     }
 
-    
+
     if (hurdles[hurdles.length - 1].y >= canvas.height / 2.5) {
         generateHurdle();
     }
 
-    if (osc.x >= canvas.width-15 || osc.x <= 15) {
+    if (osc.x >= canvas.width - 15 || osc.x <= 15) {
         changeOscillatingDirection();
     }
-    
+
     osc.x += oscillatingForce;
 
     requestAnimationFrame(() => { gamePlay(); });
@@ -63,9 +63,17 @@ gamePlay = () => {
 }
 
 canvas.addEventListener("mousedown", () => { flag = true });
-canvas.addEventListener("mouseup", () => { flag = false });
+canvas.addEventListener("mouseup", () => {
+    setTimeout(() => {
+        flag = false;
+    }, 180);
+});
 canvas.addEventListener("touchstart", () => { flag = true });
-canvas.addEventListener("touchend", () => { flag = false });
+canvas.addEventListener("touchend", () => {
+    setTimeout(() => {
+        flag = false;
+    }, 180);
+});
 
 gamePlay();
 
