@@ -9,11 +9,8 @@
     max-width: 425px;
     margin: auto;
     height: 100vh;
-    /* background-color: blue; */
 }
 
 canvas {
-    /* height: inherit;
-    width: inherit; */
     background-color: #1f2833;
 }

@@ -1,11 +1,10 @@
-class RoundHurdle {
-    constructor(radius, x, y, color = 'white') {
+class Circle {
+    constructor(radius, x, y, color = '#fff') {
         this.radius = radius;
         this.x = x;
         this.y = y;
         this.color = color;
     }
-
 
     draw() {
         ctx.beginPath();

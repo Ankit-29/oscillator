@@ -2,20 +2,18 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = canvas.closest('div').offsetWidth;
 canvas.height = canvas.closest('div').clientHeight;
-
-
 const sound = document.querySelector('audio');
-
-
 let score = 0;
 let oscillatingForce = OSC_FORCE;
-let flag = false;
+let isMouseDownOrTouchActive = false;
+
+
 
 let hurdles = getStartingHurdles();
 
-const osc = new Oscillator(OSC_RADIUS, canvas.width / 2, canvas.height - 200, OSC_COLOR);
+const osc = new Circle(OSC_RADIUS, canvas.width / 2, canvas.height - 200, OSC_COLOR);
 
-gamePlay = () => {
+gameLoop = () => {
     sound.play();
     clearCanvas();
     drawScore(score);
@@ -25,7 +23,7 @@ gamePlay = () => {
     });
 
     for (let i = 0; i < hurdles.length; i++) {
-        if (getDistance(osc, hurdles[i]) < (osc.radius + hurdles[i].radius)) {
+        if (getDistance(osc, hurdles[i]) < Math.pow((osc.radius + hurdles[i].radius),2)) {
             navigator.vibrate([200, 200, 200, 200]);
             setTimeout(() => {
                 alert(`Score ${score}`);
@@ -36,7 +34,7 @@ gamePlay = () => {
         }
     }
 
-    if (flag) {
+    if (isMouseDownOrTouchActive) {
         hurdles.forEach(hurdle => {
             hurdle.y += GAME_SPEED;
         });
@@ -52,28 +50,28 @@ gamePlay = () => {
         generateHurdle();
     }
 
-    if (osc.x >= canvas.width - 15 || osc.x <= 15) {
+    if (osc.x >= canvas.width - osc.radius || osc.x <= osc.radius) {
         changeOscillatingDirection();
     }
 
     osc.x += oscillatingForce;
 
-    requestAnimationFrame(() => { gamePlay(); });
+    requestAnimationFrame(() => { gameLoop(); });
 
 }
 
-canvas.addEventListener("mousedown", () => { flag = true });
+canvas.addEventListener("mousedown", () => { isMouseDownOrTouchActive = true });
 canvas.addEventListener("mouseup", () => {
     setTimeout(() => {
-        flag = false;
+        isMouseDownOrTouchActive = false;
     }, 180);
 });
-canvas.addEventListener("touchstart", () => { flag = true });
+canvas.addEventListener("touchstart", () => { isMouseDownOrTouchActive = true });
 canvas.addEventListener("touchend", () => {
     setTimeout(() => {
-        flag = false;
+        isMouseDownOrTouchActive = false;
     }, 180);
 });
 
-gamePlay();
+gameLoop();
 
