@@ -1,34 +1,21 @@
-clearCanvas = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+import RoundHurdle from './roundHurdle.js';
+import { RADIUS_MAX_RANDOM_VALUE, RADIUS_MIN_VALUE, HURDLE_START_POINT } from './constant.js'
+
+export function generateHurdle(game) {
+    let randomRadius = Math.floor(Math.random() * RADIUS_MAX_RANDOM_VALUE, 10) + RADIUS_MIN_VALUE;
+    let randomX = Math.floor(Math.random() * game.gameWidth);
+    return new RoundHurdle(game, randomRadius, { x: randomX, y: HURDLE_START_POINT });
 }
 
 
-drawScore = (score) => {
+export function drawScore(score, ctx) {
     ctx.font = "30px Comic Sans";
-    ctx.fillStyle = "White";
+    ctx.fillStyle = "#fff";
     ctx.textAlign = "center";
     ctx.fillText(`Score: ${score}`, 80, 25);
 }
 
-changeOscillatingDirection = () => {
-    oscillatingForce = -oscillatingForce;
-}
 
-increaseScore = () => {
-    score += POINT;
-}
-
-
-generateHurdle = () => {
-    hurdles.push(new Circle(parseInt(Math.random() * ROUND_HURDLE_RANDOM_RADIUS, 10) + ROUND_HURDLE_RADIUS_MIN, parseInt(Math.random() * canvas.width), HURDLE_START_POINT));
-}
-
-getDistance = (osc, rh) => {
-    return Math.pow(osc.x - rh.x, 2) + Math.pow(osc.y - rh.y, 2);
-}
-
-getStartingHurdles = () => {
-    return [
-        new Circle(parseInt(Math.random() * ROUND_HURDLE_RANDOM_RADIUS, 10) + ROUND_HURDLE_RADIUS_MIN - 10, parseInt(Math.random() * canvas.width), HURDLE_START_POINT),
-    ];
+export function getDistance(osc, rh) {
+    return Math.pow(osc.position.x - rh.position.x, 2) + Math.pow(osc.position.y - rh.position.y, 2);
 }
