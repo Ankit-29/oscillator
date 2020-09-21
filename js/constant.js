@@ -5,7 +5,7 @@ const RADIUS_MAX_RANDOM_VALUE = 20;
 const RADIUS_MIN_VALUE = 50;
 const HURDLE_START_POINT = 20;
 const POINT = 10;
-const GAME_SPEED = 7;
+const GAME_SPEED = 8;
 const GAME_STATE = {
     'MENU': 0,
     'RUNNING': 1,
