@@ -1,6 +1,7 @@
 import Oscillator from './oscillator.js';
+import FlatHurdle from './flatHurdle.js';
 import InputHandler from './inputHandler.js';
-import { generateHurdle, drawScore, getDistance } from './helper.js';
+import { generateHurdle, drawScore, getDistance, isCollidedWithFlatHurdle } from './helper.js';
 import { GAME_SPEED, GAME_STATE, POINT } from './constant.js';
 
 
@@ -68,8 +69,10 @@ export default class Game {
 
     detectCollision() {
         let isCollided = this.hurdles.some(hurdle => {
-            if (getDistance(this.osc, hurdle) < Math.pow((this.osc.radius + hurdle.radius), 2)) {
+            if (hurdle.radius && getDistance(this.osc, hurdle) < Math.pow((this.osc.radius + hurdle.radius), 2)) {
                 return true;
+            } else if (hurdle.width) {
+                return isCollidedWithFlatHurdle(this.osc, hurdle);
             }
         });
 

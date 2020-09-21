@@ -10,8 +10,14 @@ const GAME_STATE = {
     'MENU': 0,
     'RUNNING': 1,
     'OVER': 2,
-    
-}
+};
+const HURDLE_TYPE = {
+    ROUND: 1,
+    FLAT: 2
+};
+const NO_OF_HURDLE = 2;
+const FLAT_HURDLE_MAX_WIDTH = 200;
+const FLAT_HURDLE_HEIGHT = 50;
 
 
 export {
@@ -23,5 +29,9 @@ export {
     HURDLE_START_POINT,
     GAME_SPEED,
     POINT,
-    GAME_STATE
+    GAME_STATE,
+    HURDLE_TYPE,
+    NO_OF_HURDLE,
+    FLAT_HURDLE_MAX_WIDTH,
+    FLAT_HURDLE_HEIGHT
 };
