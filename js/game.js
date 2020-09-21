@@ -52,7 +52,7 @@ export default class Game {
             ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
             ctx.font = "30px Comic Sans";
             ctx.fillStyle = "#fff";
-            ctx.fillText(`Click or Tap to Start`, this.gameWidth / 2, this.gameHeight / 2);
+            ctx.fillText(`Click or tap to start`, this.gameWidth / 2, this.gameHeight / 2);
         }
 
         if (this.gameState === GAME_STATE.OVER) {
@@ -60,7 +60,7 @@ export default class Game {
             ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
             ctx.font = "30px Comic Sans";
             ctx.fillStyle = "#fff";
-            ctx.fillText(`Game Over`, this.gameWidth / 2, this.gameHeight / 2);
+            ctx.fillText(`Refresh to start again`, this.gameWidth / 2, this.gameHeight / 2);
         }
 
         [...this.gameObject, ...this.hurdles].forEach(obj => obj.draw(ctx));
