@@ -18,7 +18,7 @@ export default class Game {
     }
 
     start() {
-        this.gameState = GAME_STATE.MENU;
+        this.gameState = GAME_STATE.RUNNING;
         this.score = 0;
         this.hurdles = [];
         this.osc = new Oscillator(this);
@@ -47,22 +47,6 @@ export default class Game {
     }
 
     draw(ctx) {
-        if (this.gameState === GAME_STATE.MENU) {
-            ctx.fillStyle = "rgb(240,248,255,0.5)";
-            ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
-            ctx.font = "30px Comic Sans";
-            ctx.fillStyle = "#fff";
-            ctx.fillText(`Click or tap to start`, this.gameWidth / 2, this.gameHeight / 2);
-        }
-
-        if (this.gameState === GAME_STATE.OVER) {
-            ctx.fillStyle = "rgb(240,248,255,0.5)";
-            ctx.fillRect(0, 0, this.gameWidth, this.gameHeight);
-            ctx.font = "30px Comic Sans";
-            ctx.fillStyle = "#fff";
-            ctx.fillText(`Refresh to start again`, this.gameWidth / 2, this.gameHeight / 2);
-        }
-
         [...this.gameObject, ...this.hurdles].forEach(obj => obj.draw(ctx));
         drawScore(this.score, ctx);
     }
@@ -80,6 +64,8 @@ export default class Game {
             this.gameState = GAME_STATE.OVER;
             this.sound.pause();
             navigator.vibrate([200, 200, 200, 200]);
+            document.querySelector("#score").innerHTML = `Socre: ${this.score}`;
+            document.querySelector(".menu").style.display = "flex";
         }
     }
 

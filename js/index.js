@@ -1,3 +1,4 @@
+import { GAME_STATE } from './constant.js';
 import Game from './game.js';
 
 const canvas = document.querySelector('canvas');
@@ -8,15 +9,24 @@ const sound = document.querySelector('audio');
 const GAME_WIDTH = canvas.width;
 const GAME_HEIGHT = canvas.height;
 
+let game;
 
-const game = new Game(GAME_WIDTH, GAME_HEIGHT, sound);
 
 function gameLoop() {
+    if(game.gameState === GAME_STATE.OVER){
+        return;
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     game.update();
     game.draw(ctx);
     requestAnimationFrame(() => { gameLoop(); });
 }
 
-gameLoop();
+
+document.querySelector('.btn').addEventListener('click', (ele) => {
+    game = new Game(GAME_WIDTH, GAME_HEIGHT, sound);
+    document.querySelector(".menu").style.display = "none";
+    gameLoop();
+});
+
 

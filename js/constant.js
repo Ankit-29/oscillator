@@ -7,9 +7,8 @@ const HURDLE_START_POINT = 20;
 const POINT = 10;
 const GAME_SPEED = 8;
 const GAME_STATE = {
-    'MENU': 0,
-    'RUNNING': 1,
-    'OVER': 2,
+    'RUNNING': 0,
+    'OVER': 1,
 };
 const HURDLE_TYPE = {
     ROUND: 1,

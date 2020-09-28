@@ -13,16 +13,13 @@ export default class InputHandler {
 
 
         canvas.addEventListener("mousedown", () => {
-            this.activateGameState();
             this.game.isGameMotionActive = true;
         });
         canvas.addEventListener("touchstart", () => {
-            this.activateGameState();
             this.game.isGameMotionActive = true;
         });
 
         document.addEventListener("keydown", (e) => {
-            this.activateGameState();
             if (e.code === 'Space') {
                 this.game.isGameMotionActive = true;
             }
@@ -47,11 +44,4 @@ export default class InputHandler {
         });
     }
 
-
-    activateGameState() {
-        if (this.game.gameState === GAME_STATE.MENU) {
-            this.game.gameState = GAME_STATE.RUNNING;
-        }
-
-    }
 }
